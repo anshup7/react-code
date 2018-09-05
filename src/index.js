@@ -1,73 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header } from './app/components/Header';
-import { Home } from './app/components/Home'; 
+import { Header } from './app/components/header/Header';
+import { Skills } from './app/components/skill/Skill';
 
-
+import { skillsContainerArray } from './app/models/skills';
+import { linksArrayOfObjects } from './app/models/header';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            homeLink: 'Home',
-            homeMounted: true
-        };
+        this.listOfObjects = linksArrayOfObjects;
     }
-
-    onChangeHomeMounted() {
-        this.setState({
-            homeMounted: !this.state.homeMounted
-        });
-    }
-
-    onGreet() {
-        alert("Hello!");
-    }
-
-    onChangeLinkName(newName) {
-        this.setState({
-            homeLink: newName
-        });
-    }
-
-    render() { 
-        let homeComponent = '';
-        if (this.state.homeMounted) {
-            homeComponent = (
-                <Home
-                name={'Anshuman'}
-                initialAge={24}
-                greet={this.onGreet}
-                changeLink={this.onChangeLinkName.bind(this)}
-                initialLinkName={this.state.homeLink}
+    render() {
+        return (
+            <div className="container-fluid">
+                <Header name={"Anshuman Upadhyay"}
+                    socialNetwork={this.listOfObjects}
                 />
-            );
-            
-        }
-        return(
-
-            <div className="container">
+                <hr />
                 <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12">
-                        <Header homeLink={this.state.homeLink}/>                    
-                    </div>
-                </div>
 
-                <div className="row">
-                    <div className="col-xs-12 col-sm-12 col-md-12">
-                        <button onClick={() => this.onChangeHomeMounted()} className="btn btn-primary">
-                            (Un)Mount Home Component
-                        </button>
-                        {homeComponent}
-                    </div>
+                    {skillsContainerArray.map((objectContainer, index) =>
+                        <Skills key={index} skillObjects={objectContainer} 
+                    />)}
+                    
                 </div>
 
             </div>
         );
     }
+
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root')); 
