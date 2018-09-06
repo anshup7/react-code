@@ -5,6 +5,7 @@ import { Skills } from './app/components/skill/Skill';
 
 import { skillsContainerArray } from './app/models/skills';
 import { linksArrayOfObjects } from './app/models/header';
+import './root.css';
 
 class App extends React.Component {
     constructor(props) {
@@ -18,15 +19,19 @@ class App extends React.Component {
                     socialNetwork={this.listOfObjects}
                 />
                 <hr />
-                <div className="row">
+
+                <div className="row root-settings">
 
                     {skillsContainerArray.map((objectContainer, index) =>
-                        <Skills key={index} skillObjects={objectContainer} 
-                    />)}
-                    
-                </div>
+                        <Skills key={index} skillObjects={objectContainer}
+                        />
 
+                    )
+                    }
+
+                </div>
             </div>
+
         );
     }
 

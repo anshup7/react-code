@@ -1,17 +1,17 @@
 import React from 'react';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
-
+import './skill.css';
 export const Skills = (props) => {
     return (
-        <div className="col-md-6 col-sm-6 col-xs-6">
+        <div className="col-md-3 col-sm-3 col-xs-3">
 
             <div className="card text-center">
                 <div className="card-header">
                     <img width={props.skillObjects.width} 
                         height={props.skillObjects.height} 
                         src={props.skillObjects.imageSource} 
-                        alt="skill-related-image" 
+                        alt="skill-related-image"  
                     />
                 </div>
 
